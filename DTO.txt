@@ -11,6 +11,15 @@ public class DTO {
     public DTO() {
     }
 
+    public DTO(String login, String password, Long timestamp) {
+        this.login = login;
+        this.password = password;
+        this.timestamp = timestamp;
+    }    
+
+    public DTO() {
+    }
+
     public String getLogin() {
         return login;
     }
