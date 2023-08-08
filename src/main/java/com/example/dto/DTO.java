@@ -1,3 +1,7 @@
+package com.example.dto;
+
+import java.util.Objects;
+
 public class DTO {
     private String username;
     private String password;

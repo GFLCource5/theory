@@ -1,4 +1,4 @@
-package builder;
+package com.example.builder;
 
 import java.util.Objects;
 

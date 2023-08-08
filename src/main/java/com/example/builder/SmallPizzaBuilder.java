@@ -1,4 +1,4 @@
-package builder;
+package com.example.builder;
 
 public class SmallPizzaBuilder extends AbstractPizzaBuilder{
     public SmallPizzaBuilder() {

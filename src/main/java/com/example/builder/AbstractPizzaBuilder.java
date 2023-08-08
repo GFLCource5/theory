@@ -1,4 +1,4 @@
-package builder;
+package com.example.builder;
 
 public abstract class AbstractPizzaBuilder {
     private Size size;

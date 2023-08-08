@@ -1,4 +1,4 @@
-package builder;
+package com.example.builder;
 
 public class PizzaDirector {
     private AbstractPizzaBuilder pizzaBuilder;
