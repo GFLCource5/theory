@@ -1,4 +1,4 @@
-package com.example.noteDTO
+package com.example.noteDTO;
 
 public class NoteDTO{
 
@@ -40,7 +40,7 @@ public class NoteDTO{
 	     return true;
 	    }
 
-	  if (object instanceOf NoteDTO) {
+	  if (object instanceof NoteDTO) {
 	    NoteDTO dto = (NoteDTO) object;
             return dto.getId() == this.id;
 	  }
