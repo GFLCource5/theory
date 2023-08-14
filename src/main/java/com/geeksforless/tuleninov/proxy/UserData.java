@@ -1,5 +1,7 @@
 package com.geeksforless.tuleninov.proxy;
 
+import java.util.Objects;
+
 public class UserData {
     private int id;
     private String firstName;
@@ -32,22 +34,14 @@ public class UserData {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserData)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         UserData userData = (UserData) o;
-
-        if (getId() != userData.getId()) return false;
-        if (getFirstName() != null ? !getFirstName().equals(userData.getFirstName()) : userData.getFirstName() != null)
-            return false;
-        return getLastName() != null ? getLastName().equals(userData.getLastName()) : userData.getLastName() == null;
+        return Objects.equals(firstName, userData.firstName) && Objects.equals(lastName, userData.lastName);
     }
 
     @Override
     public int hashCode() {
-        int result = getId();
-        result = 31 * result + (getFirstName() != null ? getFirstName().hashCode() : 0);
-        result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
-        return result;
+        return Objects.hash(firstName, lastName);
     }
 
     @Override
