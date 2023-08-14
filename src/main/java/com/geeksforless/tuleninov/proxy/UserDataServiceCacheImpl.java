@@ -7,10 +7,11 @@ import java.util.UUID;
 public class UserDataServiceCacheImpl implements UserDataService {
     private UserDataService userDataService;
     private UserData user;
-    private final Map<UUID, UserData> cache = new HashMap<>();
+    private final Map<UUID, UserData> cache;
     private final DataBase db;
 
     public UserDataServiceCacheImpl() {
+        cache = new HashMap<>();
         db = new DataBase();
     }
 
