@@ -20,7 +20,7 @@ public class NotificationService {
         notification.setStatus(status);
         notification.setDeliveryDate(LocalDateTime.now().plusDays(random(min, max)));
         messageBox.setNotification(notification);
-        System.out.println("Your message: " + notification.getStatus() + ". delivery date: " + notification.getDeliveryDate().format(date));
+        System.out.println("Your message: " + notification.getStatus() + ". delivery date: " + notification.getDeliveryDate().format(date) + " From: " + messageBox.getFrom() + " To: " + messageBox.getTo() + " By: "+ messageBox.getDelivery().getType());
     }
 
     private static long random(int min, int max) {
