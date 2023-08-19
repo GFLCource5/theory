@@ -30,8 +30,14 @@ public class ShoppingMain {
         NpShoppingImpl.send(messageBox2);
         NpShoppingImpl.send(messageBox3);
 
+        printResult();
+    }
+
+    private static void printResult() {
         HashMap<UUID, MessageBox> allMessageBox = MessageBoxService.getAllMessageBox();
         allMessageBox.forEach((key, value) -> System.out.println("id: " + key + "   "
+                + "delivery type: " + value.getDelivery().getType() + "   "
+                + "delivery weight: " + value.getPackageBox().getWeight() + "   "
                 + "delivery date: " + value.getNotification().getDeliveryDate().toLocalDate()));
     }
 }

@@ -8,7 +8,7 @@ public class PackageBoxService {
 
     public static void packaging(MessageBox messageBox) {
         PackageBox packageBox = new PackageBox();
-        packageBox.setWeight(Random.generate(1, 20));
+        packageBox.setWeight(Random.generate(1, 30));
         packageBox.setX(Random.generate(5, 20));
         packageBox.setY(Random.generate(5, 20));
         packageBox.setZ(Random.generate(5, 20));
