@@ -2,6 +2,7 @@ package org.example.builder;
 
 public interface FactoryBuilder<T extends Builder<T>> {
 
-    public Builder<T> getBuilder(Class<T> builderClass);
+    Builder<T> getBuilder(Class<T> builderClass)
+        throws InstantiationException, IllegalAccessException;
 
 }
