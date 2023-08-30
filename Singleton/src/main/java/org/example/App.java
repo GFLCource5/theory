@@ -5,7 +5,7 @@ package org.example;
  */
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         System.out.println("Run tests");
     }
 }

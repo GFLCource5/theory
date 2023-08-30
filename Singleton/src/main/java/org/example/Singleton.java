@@ -1,18 +1,18 @@
 package org.example;
 
 import java.io.ObjectStreamException;
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Singleton implements Serializable {
 
-  private Singleton() {
-
-  }
+  private final static Object object = new Object();
 
   public static Singleton getInstance() {
     return SingletonHolder.INSTANCE;
   }
 
+  @Serial
   protected Object readResolve() throws ObjectStreamException {
     return SingletonHolder.INSTANCE;
   }
@@ -26,7 +26,18 @@ public class Singleton implements Serializable {
 
     private static final Singleton INSTANCE = new Singleton();
 
-  }
+    private SingletonHolder() {
+      if (SingletonHolder.INSTANCE != null) {
+        synchronized (object) {
+          if (SingletonHolder.INSTANCE != null) {
+            throw new UnsupportedOperationException("Say no to reflection");
+          }
+        }
+      } else {
+        throw new UnsupportedOperationException("Say no to reflection");
+      }
+    }
 
+  }
 
 }
