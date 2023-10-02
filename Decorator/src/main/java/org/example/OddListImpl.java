@@ -2,8 +2,9 @@ package org.example;
 
 import java.util.AbstractList;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class OddListImpl<Integer> extends AbstractList implements OddList {
+public class OddListImpl<T extends Integer> extends AbstractList implements OddList {
 
     private final List<Integer> list;
 
@@ -13,14 +14,17 @@ public class OddListImpl<Integer> extends AbstractList implements OddList {
 
     @Override
     public Object get(int index) {
-
-        list.stream().filter(s -> )
-
-
+        List<Integer> filtered = filterList();
+        return filtered.get(index);
     }
 
     @Override
     public int size() {
-        return 0;
+        return filterList().size();
     }
+
+    private List<Integer> filterList(){
+        return list.stream().filter(s -> s % 2 != 0).toList();
+    }
+
 }
