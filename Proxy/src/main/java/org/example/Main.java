@@ -6,5 +6,10 @@ public class Main {
         Screamer screamer = new Signaling();
         System.out.println(screamer.scream());
 
+        System.out.println("\n");
+
+        Screamer proxy = new ScreamerWithThunder(screamer);
+        System.out.println(proxy.scream());
+
     }
 }
