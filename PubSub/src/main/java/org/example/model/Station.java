@@ -3,13 +3,13 @@ package org.example.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Station<T extends Passenger> extends ArrayList implements List {
+public class Station<T extends Passenger>{
 
-    private Station<T> instance;
+    private List<Passenger> instance;
 
-    public synchronized Station<T> getInstance(){
+    public synchronized List<Passenger> getInstance(){
         if (instance == null){
-            instance = new Station<>();
+            instance = new ArrayList<>();
         }
         return instance;
     }
