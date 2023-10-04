@@ -9,9 +9,9 @@ public class SingleTaxi implements Taxi {
 
     @Override
     public void ride(List<Passenger> passengers) {
-
-        String collect = passengers.stream().map(Passenger::getName).collect(Collectors.joining());
-        System.out.println("Taxi transport" + collect);
-
+        if (!passengers.isEmpty()){
+            String collect = passengers.stream().map(Passenger::getName).collect(Collectors.joining());
+            System.out.println("Taxi transport" + collect);
+        }
     }
 }
