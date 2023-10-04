@@ -4,6 +4,6 @@ import org.example.model.Passenger;
 
 public interface Subscriber {
 
-    void getPassenger(Passenger... passengers);
+    void transportPassengers();
 
 }

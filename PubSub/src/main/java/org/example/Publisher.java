@@ -1,7 +1,9 @@
 package org.example;
 
+import org.example.model.Passenger;
+
 public interface Publisher {
 
-    void transportPassengers();
+    void registerPassengers(Passenger... passengers);
 
 }
