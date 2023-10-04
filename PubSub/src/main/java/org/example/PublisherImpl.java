@@ -3,6 +3,8 @@ package org.example;
 import org.example.model.Passenger;
 import org.example.model.Station;
 
+import java.util.Arrays;
+
 public class PublisherImpl implements Publisher{
 
     private final Station<Passenger> passengers;
@@ -13,6 +15,6 @@ public class PublisherImpl implements Publisher{
 
     @Override
     public void registerPassengers(Passenger... passengers) {
-
+        this.passengers.getInstance().addAll(Arrays.asList(passengers));
     }
 }
