@@ -24,7 +24,7 @@ public class BookRestControllerImpl implements BookRestController {
     }
 
     @Override
-    @PostMapping("/book/")
+    @PostMapping("/books/")
     public ResponseEntity<List<Book>> addBooks(List books) {
         return ResponseEntity.ok(service.createBooks(books));
     }
