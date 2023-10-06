@@ -3,11 +3,12 @@ package com.example.validatelist.service;
 import com.example.validatelist.entity.Book;
 import org.springframework.stereotype.Service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class BookRestControllerImpl implements BookRestController {
+public class BookServiceImpl implements BookService {
 
     private final List<Book> books = new ArrayList<>();
 

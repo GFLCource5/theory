@@ -4,7 +4,7 @@ import com.example.validatelist.entity.Book;
 
 import java.util.List;
 
-public interface BookRestController {
+public interface BookService {
 
     Book createBook(Book book);
 
