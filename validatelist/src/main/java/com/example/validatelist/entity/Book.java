@@ -20,6 +20,14 @@ public class Book {
         this.name = name;
     }
 
+    public Book(String author, String name) {
+        this.author = author;
+        this.name = name;
+    }
+
+    public Book() {
+    }
+
     public long getId() {
         return id;
     }
