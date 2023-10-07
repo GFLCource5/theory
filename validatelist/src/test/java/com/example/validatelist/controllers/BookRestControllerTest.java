@@ -5,6 +5,7 @@ import com.example.validatelist.service.BookService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.mockito.Answers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,12 +16,12 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(BookService.class)
+@WebMvcTest(BookRestController.class)
 class BookRestControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @MockBean(answer = Answers.CALLS_REAL_METHODS)
     private BookService service;
 
     @Test
@@ -28,13 +29,13 @@ class BookRestControllerTest {
         Book book = new Book("author", "Book name");
         when(service.createBook(book)).thenReturn(book);
 
-        mockMvc.perform(post("/book").contentType(MediaType.APPLICATION_JSON_VALUE)
-                .accept(MediaType.APPLICATION_JSON_VALUE)
-                        .content(objectToJson(book)))
+        this.mockMvc.perform(post("/book")
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(objectToJson(book)
+                        ).contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.author").value("author"))
-                .andExpect(jsonPath("$.name").value("Book name"));
-
+                .andExpect(jsonPath("author").value("author"))
+                .andExpect(jsonPath("name").value("Book name"));
     }
 
     @Test
