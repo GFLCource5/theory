@@ -21,7 +21,7 @@ public class BookRestController {
         this.service = service;
     }
 
-    @PostMapping("/book/")
+    @PostMapping("/book")
     public ResponseEntity<Book> addBook(@RequestBody @Valid Book book) {
         return ResponseEntity.ok(service.createBook(book));
     }
