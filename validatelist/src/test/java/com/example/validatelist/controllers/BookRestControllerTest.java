@@ -12,6 +12,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -39,15 +41,45 @@ class BookRestControllerTest {
     }
 
     @Test
-    void addValidBooks() {
+    void addValidBooks() throws Exception {
+        Book book = new Book("author", "Book name");
+        Book book1 = new Book("author1", "Book name1");
+        when(service.createBooks(List.of(book,book1))).thenReturn(List.of(book,book1));
+
+        this.mockMvc.perform(post("/book/many")
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(objectToJson(new Book[]{book, book1})).contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.author").value("author"))
+                .andExpect(jsonPath("$.name").value("Book name"))
+                .andExpect(jsonPath("$.author").value("author1"))
+                .andExpect(jsonPath("$.name").value("Book name1"));
+
     }
 
     @Test
-    void addInvalidBook() {
+    void addInvalidBook() throws Exception {
+        Book book = new Book("author", "Книга");
+        when(service.createBook(book)).thenReturn(book);
+
+        this.mockMvc.perform(post("/book")
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(objectToJson(book)
+                        ).contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
-    void addInvalidBooks() {
+    void addInvalidBooks() throws Exception {
+        Book book = new Book("author", "книга");
+        Book book1 = new Book("author1", "Book name1");
+        when(service.createBooks(List.of(book,book1))).thenReturn(List.of(book,book1));
+
+        this.mockMvc.perform(post("/book/many")
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(objectToJson(new Book[]{book, book1})
+                        ).contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().is5xxServerError());
     }
 
 
