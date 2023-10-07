@@ -13,11 +13,11 @@ import java.util.List;
 
 @RestController
 @Validated
-public class BookRestControllerImpl {
+public class BookRestController {
 
     private  final  BookService service;
 
-    public BookRestControllerImpl(BookService service) {
+    public BookRestController(BookService service) {
         this.service = service;
     }
 
