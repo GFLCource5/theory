@@ -14,7 +14,7 @@ public class AsyncService {
     public int generateNumber() throws InterruptedException {
         logger.info("Start generate" + Thread.currentThread().getName());
         int number = LocalDateTime.now().getSecond();
-        int randomNumber = number - getRandomInt(number/3, number/2))
+        int randomNumber = number - getRandomInt(number/3, number/2);
         Thread.sleep(randomNumber);
         logger.info("Finish generate" + Thread.currentThread().getName());
         return randomNumber;
