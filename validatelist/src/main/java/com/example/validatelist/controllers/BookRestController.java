@@ -26,7 +26,7 @@ public class BookRestController {
         return ResponseEntity.ok(service.createBook(book));
     }
 
-    @PostMapping("/book/many")
+    @PostMapping("/book/many/")
     public ResponseEntity<List<Book>> addBooks(@RequestBody List<@Valid Book> books) {
         return ResponseEntity.ok(service.createBooks(books));
     }
