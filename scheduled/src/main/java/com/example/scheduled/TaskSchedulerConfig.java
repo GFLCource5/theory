@@ -15,7 +15,7 @@ public class TaskSchedulerConfig implements SchedulingConfigurer {
 
     @Bean
     public Executor taskExecutor() {
-        return Executors.newWorkStealingPool(3);
+        return Executors.unconfigurableScheduledExecutorService(Executors.newSingleThreadScheduledExecutor());
     }
 
     @Override
