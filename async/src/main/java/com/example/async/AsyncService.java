@@ -2,6 +2,7 @@ package com.example.async;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,12 +13,13 @@ public class AsyncService {
 
     private static final Logger logger = LoggerFactory.getLogger(AsyncService.class);
 
+    @Async
     public CompletableFuture<Integer> generateNumber() throws InterruptedException {
-        logger.info("Start generate" + Thread.currentThread().getName());
-        int number = LocalDateTime.now().getSecond();
+        logger.info("Start generate " + Thread.currentThread().getName());
+        int number = LocalDateTime.now().getSecond() + getRandomInt(1, 200);
         int randomNumber = number - getRandomInt(number/3, number/2);
         Thread.sleep(randomNumber);
-        logger.info("Finish generate" + Thread.currentThread().getName());
+        logger.info("Finish generate " + Thread.currentThread().getName());
         return CompletableFuture.completedFuture(randomNumber);
     }
 
